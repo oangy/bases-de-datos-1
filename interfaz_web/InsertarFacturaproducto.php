@@ -3,20 +3,20 @@
 	require("conexion.php");
 	extract($_GET);
 	
-	if($documento==null){
+	if($id_producto==null){
 		echo "Campo vacio";
 	}
 	
 	else{
 		$query = "INSERT INTO solista VALUES
-		('$documento','$nombre','$instrumentos'); ";
+		('$id_producto','$id_factura'); ";
 
 		$result = mysqli_query($conexion,$query);
 
 		if($result){
-			echo "Solista insertado correctamente";
+			echo "Facturaproducto insertado correctamente";
 		}else{    
-			echo "Error al insertar solista";
+			echo "Error al insertar facturaproducto";
 		}
 	}
 ?>

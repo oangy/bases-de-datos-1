@@ -3,20 +3,20 @@
 	require("conexion.php");
 	extract($_GET);
 	
-	if($documento==null){
+	if($codigo==null){
 		echo "Campo vacio";
 	}
 	
 	else{
-		$query = "INSERT INTO solista VALUES
-		('$documento','$nombre','$instrumentos'); ";
+		$query = "INSERT INTO grupo VALUES
+		('$codigo','$nombre',$numero_de_integrantes); ";
 
 		$result = mysqli_query($conexion,$query);
 
 		if($result){
-			echo "Solista insertado correctamente";
-		}else{    
-			echo "Error al insertar solista";
+			echo "Grupo insertado correctamente";
+		}else{
+			echo "Error al insertar Grupo";
 		}
 	}
 ?>

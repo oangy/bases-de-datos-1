@@ -3,20 +3,20 @@
 	require("conexion.php");
 	extract($_GET);
 	
-	if($documento==null){
+	if($fecha==null){
 		echo "Campo vacio";
 	}
 	
 	else{
 		$query = "INSERT INTO solista VALUES
-		('$documento','$nombre','$instrumentos'); ";
+		('$fecha','$nombre','$id_grupo','$id_solista'); ";
 
 		$result = mysqli_query($conexion,$query);
 
 		if($result){
-			echo "Solista insertado correctamente";
+			echo "Noche insertado correctamente";
 		}else{    
-			echo "Error al insertar solista";
+			echo "Error al insertar Noche";
 		}
 	}
 ?>

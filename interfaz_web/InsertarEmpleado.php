@@ -8,15 +8,15 @@
 	}
 	
 	else{
-		$query = "INSERT INTO solista VALUES
-		('$documento','$nombre','$instrumentos'); ";
+		$query = "INSERT INTO empleado VALUES
+		('$documento','$nombre'); ";
 
 		$result = mysqli_query($conexion,$query);
 
 		if($result){
-			echo "Solista insertado correctamente";
-		}else{    
-			echo "Error al insertar solista";
+			echo "Empleado insertado correctamente";
+		}else{
+			echo "Error al insertar Empleado";
 		}
 	}
 ?>
