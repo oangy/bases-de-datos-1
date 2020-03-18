@@ -14,6 +14,4 @@ if($result){
     echo $query;
 }
 
-
-
 ?>
