@@ -9,12 +9,12 @@
 	require("conexion.php");
 	extract($_POST);
 
-	if($carne==null){
+	if($documento==null){
 		echo "Campo vacio";
 	}
 	
 	else{
-		$query = "SELECT * FROM solista WHERE documento=$documento";
+		$query = "SELECT * FROM solista WHERE documento='$documento'";
 
 		$result = mysqli_query($conexion,$query);
 		$r= mysqli_query($conexion,$query);
@@ -22,33 +22,31 @@
 		if(!$r or (($r->fetch_row())==0)){
 			
 			
-			echo "No se ha encontrado el empleado";
+			echo "No se ha encontrado el solista";
 			
 		}
 		else if ($result){
 
 
 			while($row = $result->fetch_array()){
-				$telefono = $row["telefono"];
+				$telefono = $row["documento"];
 				$nombre = $row["nombre"];
-				$sueldo =$row["sueldo"];
+				$instrumentos =$row["instrumentos"];
 
 
 	?>
-		<form action="ActualizarEmpleadoPro.php" method="POST">
+		<form action="ActualizarSolistaPro.php" method="POST">
 			
-			<input type="hidden" name="carne_v" value=<?php echo $carne ?>>
-			<label>Carne: </label>
-			<label><?php echo $carne ?> </label><br><br>
-			<label>Telefono: </label>
-			<input type="number" name="telefono_n" value=<?php echo $telefono ?>><br><br>
+			<input type="hidden" name="documento_v" value=<?php echo $documento ?>>
+			<label>Documento: </label>
+			<label><?php echo $documento ?> </label><br><br>
 			<label>Nombre: </label>
 			<input type="text" name="nombre_n" value=<?php echo $nombre ?>><br><br>
-			<label>Sueldo :</label>
-			<input type="number" name="sueldo_n" value=<?php echo $sueldo?>><br>
+			<label>Instrumentos :</label>
+			<input type="text" name="instrumentos_n" value=<?php echo $instrumentos?>><br>
 			<input type="submit" value="Editar">
 			
-			<input type="hidden" name="carne" value=<?php echo $carne ?>>
+			<input type="hidden" name="documento" value=<?php echo $documento ?>>
 			
 		</form>
 
