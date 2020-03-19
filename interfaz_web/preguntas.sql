@@ -13,4 +13,4 @@ GROUP BY documento;
 #---PREGUNTA 3 Numero de contratos que tiene un empleado--------------
 
 #---PREGUNTA 4 Total de dinero en ventas de productos--------------
-SELECT SUM(precio) FROM (producto INNER JOIN factura_producto ON factura_producto.id_producto LIKE producto.codigo) ;
+SELECT SUM(precio) AS total FROM (producto INNER JOIN factura_producto ON factura_producto.id_producto LIKE producto.codigo) ;
