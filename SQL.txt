@@ -1,6 +1,7 @@
 #------------------------------------------------estructura-----------------------------------------------------------------
 #-----------bade_de_datos-------
 CREATE OR REPLACE DATABASE big_flame_bar;
+USE big_flame_bar;
 #-----------entidades-------
 
 CREATE OR REPLACE TABLE grupo(
