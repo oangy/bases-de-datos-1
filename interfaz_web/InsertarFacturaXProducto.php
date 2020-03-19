@@ -6,17 +6,20 @@
 	if($id_producto==null){
 		echo "Campo vacio";
 	}
+	if($id_factura==null){
+		echo "Campo vacio";
+	}
 	
 	else{
-		$query = "INSERT INTO solista VALUES
+		$query = "INSERT INTO factura_producto VALUES
 		('$id_producto','$id_factura'); ";
 
 		$result = mysqli_query($conexion,$query);
 
 		if($result){
-			echo "Facturaproducto insertado correctamente";
+			echo "FacturaXProducto insertado correctamente";
 		}else{    
-			echo "Error al insertar facturaproducto";
+			echo "Error al insertar FacturaXProducto";
 		}
 	}
 ?>
