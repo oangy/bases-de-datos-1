@@ -19,7 +19,7 @@
 	if(!$r or (($r->fetch_row())==0)){
 		
 		
-		echo "Error ";
+		echo "Este empleado no ha vendido ningun producto ";
 		
 	}
 	else if ($result){
