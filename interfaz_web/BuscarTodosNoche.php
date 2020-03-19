@@ -42,7 +42,7 @@
                             $id_solista = $row["id_solista"];
 						?>
 							<tr>
-								<td><?php echo $feha ?></td>
+								<td><?php echo $fecha ?></td>
 								<td><?php echo $nombre ?></td>
                                 <td><?php echo $id_grupo ?></td>
                                 <td><?php echo $id_solista ?></td>
