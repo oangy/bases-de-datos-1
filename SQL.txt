@@ -73,6 +73,25 @@ INSERT INTO solista(documento,nombre,instrumentos)
 VALUES("1036965861","Mauricio Nieto","Vocalista y piano");
 INSERT INTO solista(documento,nombre,instrumentos)
 VALUES("1036452874","Simon Cano","Vocalista");
+INSERT INTO solista(documento,nombre,instrumentos)
+VALUES("1036259445","Mario Mendoza","saxofon");
+INSERT INTO solista(documento,nombre,instrumentos)
+VALUES("1036258615","Milena Taborda","saxofon");
+INSERT INTO solista(documento,nombre,instrumentos)
+VALUES("1036985556","Angy Ortiz","saxofon");
+INSERT INTO solista(documento,nombre,instrumentos)
+VALUES("1032665478","Santiago Upegui","saxofon");
+INSERT INTO solista(documento,nombre,instrumentos)
+VALUES("1032548798","Manuela Mesa","saxofon");
+INSERT INTO solista(documento,nombre,instrumentos)
+VALUES("1032946541","Norma London","saxofon");
+INSERT INTO solista(documento,nombre,instrumentos)
+VALUES("1038465565","Bladimir Putin","saxofon");
+INSERT INTO solista(documento,nombre,instrumentos)
+VALUES("1045658454","Ricardo Sanchez","saxofon");
+
+
+
 
 #---------------empleado--------------
 INSERT INTO empleado(documento,nombre)
@@ -85,6 +104,16 @@ INSERT INTO empleado(documento,nombre)
 VALUES("1036231598","Luis Arjona");
 INSERT INTO empleado(documento,nombre)
 VALUES("1036235196","Nicolas Arango");
+INSERT INTO empleado(documento,nombre)
+VALUES("1035465548","Sebastian Munera");
+INSERT INTO empleado(documento,nombre)
+VALUES("1055846511","Fabio Montoya");
+INSERT INTO empleado(documento,nombre)
+VALUES("1025846546","Sara Hernandez ");
+INSERT INTO empleado(documento,nombre)
+VALUES("1065968465","Marta Stewart");
+INSERT INTO empleado(documento,nombre)
+VALUES("1064541327","James Walker");
 
 #---------------noche--------------
 INSERT INTO noche(fecha,nombre,id_grupo)
@@ -121,6 +150,20 @@ INSERT INTO factura(codigo,id_noche,id_empleado)
 VALUES("54658M",'2020-03-15',"1036231598");
 INSERT INTO factura(codigo,id_noche,id_empleado)
 VALUES("54658P",'2020-03-16',"1036235146");
+INSERT INTO factura(codigo,id_noche,id_empleado)
+VALUES("1",'2020-03-16',"1036235146");
+INSERT INTO factura(codigo,id_noche,id_empleado)
+VALUES("2",'2020-03-16',"1036235146");
+INSERT INTO factura(codigo,id_noche,id_empleado)
+VALUES("3",'2020-03-16',"1036235146");
+INSERT INTO factura(codigo,id_noche,id_empleado)
+VALUES("4",'2020-03-16',"1036235146");
+INSERT INTO factura(codigo,id_noche,id_empleado)
+VALUES("5",'2020-03-16',"1036235146");
+INSERT INTO factura(codigo,id_noche,id_empleado)
+VALUES("6",'2020-03-16',"1036235146");
+INSERT INTO factura(codigo,id_noche,id_empleado)
+VALUES("7",'2020-03-16',"1036235146");
 
 #----------------producto-------------
 INSERT INTO producto(codigo,nombre,precio,grado_alcohol)
@@ -133,6 +176,8 @@ INSERT INTO producto(codigo,nombre,precio,grado_alcohol)
 VALUES("20655T","Coca Cola",10000.25,0);
 INSERT INTO producto(codigo,nombre,precio,grado_alcohol)
 VALUES("50324H","Cerveza",15000.25,0.05);
+INSERT INTO producto(codigo,nombre,precio,grado_alcohol)
+VALUES("1","Juguito",9000.25,0.01);
 
 #----------------factura_producto-------------
 INSERT INTO factura_producto(id_producto,id_factura)
@@ -145,4 +190,17 @@ INSERT INTO factura_producto(id_producto,id_factura)
 VALUES("50324H","54658M");
 INSERT INTO factura_producto(id_producto,id_factura)
 VALUES("45585P","54658P");
-
+INSERT INTO factura_producto(id_producto,id_factura)
+VALUES("1","1");
+INSERT INTO factura_producto(id_producto,id_factura)
+VALUES("1","2");
+INSERT INTO factura_producto(id_producto,id_factura)
+VALUES("1","3");
+INSERT INTO factura_producto(id_producto,id_factura)
+VALUES("1","4");
+INSERT INTO factura_producto(id_producto,id_factura)
+VALUES("1","5");
+INSERT INTO factura_producto(id_producto,id_factura)
+VALUES("1","6");
+INSERT INTO factura_producto(id_producto,id_factura)
+VALUES("1","7");

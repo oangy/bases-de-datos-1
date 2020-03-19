@@ -4,5 +4,7 @@ INSTRUCIONES:
 -instalar la pila de xammp
 -mover la carpeta interfaz_web a la carpeta htdocs de la carpeta de instalacion de xammp
 -iniciar el servicio de mysql y apache
+-ingresar en localhost/phpmyadmin y en la consola correr todos los comandos que hay en el archivo sql.txt
 -ingresar a la aplicacion desde el navegador con la direccion:
 localhost/interfaz_web/
+-
