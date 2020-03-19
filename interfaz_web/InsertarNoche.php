@@ -6,10 +6,18 @@
 	if($fecha==null){
 		echo "Campo vacio";
 	}
+	if($id_grupo==null){
+		$id_grupo='';
+	}
+	if($id_solista==null){
+		$id_solista='';
+	}
 	
 	else{
 		$query = "INSERT INTO solista VALUES
 		('$fecha','$nombre','$id_grupo','$id_solista'); ";
+
+		echo $query;
 
 		$result = mysqli_query($conexion,$query);
 

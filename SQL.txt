@@ -1,0 +1,148 @@
+#------------------------------------------------estructura-----------------------------------------------------------------
+#-----------bade_de_datos-------
+CREATE OR REPLACE DATABASE big_flame_bar;
+#-----------entidades-------
+
+CREATE OR REPLACE TABLE grupo(
+    codigo VARCHAR(10) PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    numero_de_integrantes INTEGER NOT NULL
+);
+CREATE OR REPLACE TABLE solista(
+    documento VARCHAR(20) PRIMARY KEY,
+    nombre VARCHAR(100),
+    instrumentos VARCHAR(100)
+);
+CREATE OR REPLACE TABLE empleado(
+    documento VARCHAR(10) PRIMARY KEY,
+    nombre VARCHAR(10) NOT NULL
+);
+CREATE OR REPLACE TABLE noche(
+    fecha DATE PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    id_grupo VARCHAR(10) REFERENCES grupo(codigo) ON DELETE SET NULL,
+    id_solita VARCHAR(20) REFERENCES solista(documento) ON DELETE SET NULL
+);
+CREATE OR REPLACE TABLE contrato(
+    codigo VARCHAR(10) ,
+    id_noche DATE REFERENCES noche(fecha)ON DELETE SET NULL,
+    id_empleado VARCHAR(20) REFERENCES empleado(documento)ON DELETE SET NULL,
+    PRIMARY KEY(codigo,id_noche,id_empleado)
+);
+CREATE OR REPLACE TABLE factura(
+    codigo VARCHAR(10) PRIMARY KEY,
+    id_noche DATE REFERENCES noche(fecha) ON DELETE SET NULL,
+    id_empleado VARCHAR(20) REFERENCES empleado(documento) ON DELETE SET NULL
+);
+CREATE OR REPLACE TABLE producto(
+    codigo VARCHAR(10) PRIMARY KEY,
+    nombre VARCHAR(100) ,
+    precio FLOAT NOT NULL,
+    grado_alcohol FLOAT
+);
+CREATE OR REPLACE TABLE factura_producto(
+
+    id_producto VARCHAR(10) NOT NULL REFERENCES producto(codigo) ON DELETE CASCADE,
+    id_factura VARCHAR(10) NOT NULL REFERENCES factura(codigo) ON DELETE CASCADE,
+    PRIMARY KEY(id_producto,id_factura)
+
+);
+
+
+#------------------------------------------------Inserciones-----------------------------------------------------------------
+#---------------grupo--------------
+INSERT INTO grupo(codigo,nombre, numero_de_integrantes)
+VALUES("45645F","Los hombres que lloran",6);
+INSERT INTO grupo(codigo,nombre, numero_de_integrantes)
+VALUES("65458G","Los amables",5);
+INSERT INTO grupo(codigo,nombre, numero_de_integrantes)
+VALUES("32458H","LAs flacas",3);
+INSERT INTO grupo(codigo,nombre, numero_de_integrantes)
+VALUES("25615J","Los renegados",6);
+INSERT INTO grupo(codigo,nombre, numero_de_integrantes)
+VALUES("85642L","Pilatos",4);
+
+#---------------solista--------------
+INSERT INTO solista(documento,nombre,instrumentos)
+VALUES("1036676518","Pablo Neruda","Vocalista");
+INSERT INTO solista(documento,nombre,instrumentos)
+VALUES("1036645584","Roberto Carlos","Guitarra");
+INSERT INTO solista(documento,nombre,instrumentos)
+VALUES("1036642212","Santiago Estrada","Vocalista");
+INSERT INTO solista(documento,nombre,instrumentos)
+VALUES("1036965861","Mauricio Nieto","Vocalista y piano");
+INSERT INTO solista(documento,nombre,instrumentos)
+VALUES("1036452874","Simon Cano","Vocalista");
+
+#---------------empleado--------------
+INSERT INTO empleado(documento,nombre)
+VALUES("1036598524","Luis Pérez Cardona");
+INSERT INTO empleado(documento,nombre)
+VALUES("1036265987","Fabio Arango");
+INSERT INTO empleado(documento,nombre)
+VALUES("1036235146","Mario Julio");
+INSERT INTO empleado(documento,nombre)
+VALUES("1036231598","Luis Arjona");
+INSERT INTO empleado(documento,nombre)
+VALUES("1036235196","Nicolas Arango");
+
+#---------------noche--------------
+INSERT INTO noche(fecha,nombre,id_grupo)
+VALUES('2020-03-12',"La noche de los wayuu","45645F");
+INSERT INTO noche(fecha,nombre,id_grupo)
+VALUES('2020-03-13',"La noche solitaria","85642L");
+INSERT INTO noche(fecha,nombre,id_solita)
+VALUES('2020-03-14',"La noche de los solteros","1036452874");
+INSERT INTO noche(fecha,nombre,id_solita)
+VALUES('2020-03-15',"La noche de los renegados","1036645584");
+INSERT INTO noche(fecha,nombre,id_grupo)
+VALUES('2020-03-16',"La noche de ellos","25615J");
+
+#----------------contrato-------------
+INSERT INTO contrato(codigo,id_noche,id_empleado)
+VALUES("636354132",'2020-03-12',"1036598524");
+INSERT INTO contrato(codigo,id_noche,id_empleado)
+VALUES("654515456",'2020-03-13',"1036235196");
+INSERT INTO contrato(codigo,id_noche,id_empleado)
+VALUES("625465415",'2020-03-14',"1036231598");
+INSERT INTO contrato(codigo,id_noche,id_empleado)
+VALUES("654215411",'2020-03-15',"1036231598");
+INSERT INTO contrato(codigo,id_noche,id_empleado)
+VALUES("635465132",'2020-03-16',"1036235146");
+
+#----------------factura-------------
+INSERT INTO factura(codigo,id_noche,id_empleado)
+VALUES("54658J",'2020-03-12',"1036598524");
+INSERT INTO factura(codigo,id_noche,id_empleado)
+VALUES("54658I",'2020-03-13',"1036235196");
+INSERT INTO factura(codigo,id_noche,id_empleado)
+VALUES("54658L",'2020-03-14',"1036231598");
+INSERT INTO factura(codigo,id_noche,id_empleado)
+VALUES("54658M",'2020-03-15',"1036231598");
+INSERT INTO factura(codigo,id_noche,id_empleado)
+VALUES("54658P",'2020-03-16',"1036235146");
+
+#----------------producto-------------
+INSERT INTO producto(codigo,nombre,precio,grado_alcohol)
+VALUES("45585U","Coctel de Jugo de guayaba",20000.25,0.08);
+INSERT INTO producto(codigo,nombre,precio,grado_alcohol)
+VALUES("45585P","Coctel de Jugo de Maracuya",25000.25,0.08);
+INSERT INTO producto(codigo,nombre,precio,grado_alcohol)
+VALUES("32554L","Mojito",28000.25,0.07);
+INSERT INTO producto(codigo,nombre,precio,grado_alcohol)
+VALUES("20655T","Coca Cola",10000.25,0);
+INSERT INTO producto(codigo,nombre,precio,grado_alcohol)
+VALUES("50324H","Cerveza",15000.25,0.05);
+
+#----------------factura_producto-------------
+INSERT INTO factura_producto(id_producto,id_factura)
+VALUES("45585U","54658J");
+INSERT INTO factura_producto(id_producto,id_factura)
+VALUES("45585P","54658I");
+INSERT INTO factura_producto(id_producto,id_factura)
+VALUES("20655T","54658L");
+INSERT INTO factura_producto(id_producto,id_factura)
+VALUES("50324H","54658M");
+INSERT INTO factura_producto(id_producto,id_factura)
+VALUES("45585P","54658P");
+
