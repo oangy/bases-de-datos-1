@@ -22,7 +22,7 @@ CREATE OR REPLACE TABLE noche(
     fecha DATE PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     id_grupo VARCHAR(10) REFERENCES grupo(codigo) ON DELETE SET NULL,
-    id_solita VARCHAR(20) REFERENCES solista(documento) ON DELETE SET NULL
+    id_solista VARCHAR(20) REFERENCES solista(documento) ON DELETE SET NULL
 );
 CREATE OR REPLACE TABLE contrato(
     codigo VARCHAR(10) ,
@@ -96,11 +96,11 @@ VALUES("1045658454","Ricardo Sanchez","saxofon");
 
 #---------------empleado--------------
 INSERT INTO empleado(documento,nombre)
+VALUES("1036235146","Mario Julio");
+INSERT INTO empleado(documento,nombre)
 VALUES("1036598524","Luis Pérez Cardona");
 INSERT INTO empleado(documento,nombre)
 VALUES("1036265987","Fabio Arango");
-INSERT INTO empleado(documento,nombre)
-VALUES("1036235146","Mario Julio");
 INSERT INTO empleado(documento,nombre)
 VALUES("1036231598","Luis Arjona");
 INSERT INTO empleado(documento,nombre)
@@ -121,9 +121,9 @@ INSERT INTO noche(fecha,nombre,id_grupo)
 VALUES('2020-03-12',"La noche de los wayuu","45645F");
 INSERT INTO noche(fecha,nombre,id_grupo)
 VALUES('2020-03-13',"La noche solitaria","85642L");
-INSERT INTO noche(fecha,nombre,id_solita)
+INSERT INTO noche(fecha,nombre,id_solista)
 VALUES('2020-03-14',"La noche de los solteros","1036452874");
-INSERT INTO noche(fecha,nombre,id_solita)
+INSERT INTO noche(fecha,nombre,id_solista)
 VALUES('2020-03-15',"La noche de los renegados","1036645584");
 INSERT INTO noche(fecha,nombre,id_grupo)
 VALUES('2020-03-16',"La noche de ellos","25615J");

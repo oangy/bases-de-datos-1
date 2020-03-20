@@ -31,7 +31,7 @@
 						<th>Fecha</th>
 						<th>Nombre</th>
                         <th>Id Grupo</th>
-                        <th>Id Empleado</th>
+                        <th>Id Solista</th>
 					</tr>
 
 					<?php
