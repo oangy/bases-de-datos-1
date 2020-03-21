@@ -1,5 +1,5 @@
 #------------------------------------------------estructura-----------------------------------------------------------------
-#-----------bade_de_datos-------
+#-----------base_de_datos-------
 CREATE OR REPLACE DATABASE big_flame_bar;
 USE big_flame_bar;
 #-----------entidades-------
@@ -21,19 +21,26 @@ CREATE OR REPLACE TABLE empleado(
 CREATE OR REPLACE TABLE noche(
     fecha DATE PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
-    id_grupo VARCHAR(10) REFERENCES grupo(codigo) ON DELETE SET NULL,
-    id_solista VARCHAR(20) REFERENCES solista(documento) ON DELETE SET NULL
+    id_grupo VARCHAR(10) ,
+    id_solista VARCHAR(20),
+    FOREIGN KEY(id_grupo) REFERENCES grupo(codigo),
+    FOREIGN KEY(id_solista) REFERENCES solista(documento) 
 );
 CREATE OR REPLACE TABLE contrato(
-    codigo VARCHAR(10) ,
-    id_noche DATE REFERENCES noche(fecha)ON DELETE SET NULL,
-    id_empleado VARCHAR(20) REFERENCES empleado(documento)ON DELETE SET NULL,
-    PRIMARY KEY(codigo,id_noche,id_empleado)
+    codigo VARCHAR(10) NOT NULL,
+    id_noche DATE NOT NULL,
+    id_empleado VARCHAR(20) NOT NULL,
+    PRIMARY KEY(codigo,id_noche,id_empleado),
+    FOREIGN KEY(id_noche) REFERENCES noche(fecha),
+    FOREIGN KEY(id_empleado) REFERENCES empleado(documento)   
+    
 );
 CREATE OR REPLACE TABLE factura(
     codigo VARCHAR(10) PRIMARY KEY,
-    id_noche DATE REFERENCES noche(fecha) ON DELETE SET NULL,
-    id_empleado VARCHAR(20) REFERENCES empleado(documento) ON DELETE SET NULL
+    id_noche DATE NOT NULL,
+    id_empleado VARCHAR(20) NOT NULL,
+    FOREIGN KEY (id_noche) REFERENCES noche(fecha),
+    FOREIGN KEY (id_empleado) REFERENCES empleado(documento)
 );
 CREATE OR REPLACE TABLE producto(
     codigo VARCHAR(10) PRIMARY KEY,
@@ -42,9 +49,10 @@ CREATE OR REPLACE TABLE producto(
     grado_alcohol FLOAT
 );
 CREATE OR REPLACE TABLE factura_producto(
-
-    id_producto VARCHAR(10) NOT NULL REFERENCES producto(codigo) ON DELETE CASCADE,
-    id_factura VARCHAR(10) NOT NULL REFERENCES factura(codigo) ON DELETE CASCADE,
+    id_producto VARCHAR(10) NOT NULL,
+    id_factura VARCHAR(10) NOT NULL,
+    FOREIGN KEY(id_producto) REFERENCES producto(codigo),
+    FOREIGN KEY(id_factura) REFERENCES factura(codigo),
     PRIMARY KEY(id_producto,id_factura)
 
 );
